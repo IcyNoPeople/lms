@@ -5,7 +5,7 @@ const app = express();
 const mydatabase = require('./database');
 const session = require('express-session');
 
-const adminAddPage = require('./adding');
+const adminPage = require('./admin');
 const staffPage = require('./staffPage')
 //const {addCustomerPage, addCustomer} = require('./adding');
 //const {adminPage, viewTable, editTable, editPage} = require('./admin');
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-app.use('/admin',adminAddPage);
+app.use('/admin',adminPage);
 app.use('/staff',staffPage);
 
 

@@ -1,170 +1,457 @@
-<html>
+<!doctype html>
+<html lang="en">
+
 
 <head>
-    Edit
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Data Tables</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/select.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
+    <title>Edit</title>
 </head>
 
 <body>
-         <%=table %>
-        <p>
-                <form action="" method="post" id="addtable">
-                        <% if(table == "customer"){%>
-                        First name: <input type="text" name="first_name" id="first_name" value="<%= tableSQL.first_name %>"><br />
-                        Last name: <input type="text" name="last_name" id="last_name" value="<%= tableSQL.last_name %>"><br />
-                        Email: <input type="text" name="email" id="email" value="<%= tableSQL.email %>"><br />
-                        Address: <input type="text" name="address" id="address" value="<%= tableSQL.address %>"><br />
-                        Postal code: <input type="text" name="postal_code" id="postal_code" value="<%= tableSQL.postal_code %>"><br />
-                        Handphone no.: <input type="text" name="handphone" id="handphone" value="<%= tableSQL.handphone %>"><br />
-                        Date of birth: <input type="date" name="DOB" id="DOB" value="<%= tableSQL.date_of_birth %>"><br />
-                        Job Title: <input type="text" name="job_title" id="job_title" value="<%= tableSQL.job_title %>"><br />
-                        Company: <input type="text" name="company" id="company" value="<%= tableSQL.company %>"><br />
-                        Salary: <input type="text" name="salary" id="salary" value="<%= tableSQL.salary %>"><br />
-                        Username: <input type="text" name="username" id="username" value="<%= tableSQL.username %>"><br />
-                        Password: <input type="password" name="password" id="password" value="<%= tableSQL.password %>"><br />
-                        <% } %>
-    
-                        <% if(table == "staff"){%>
-                            First name: <input type="text" name="first_name" id="first_name" value="<%= tableSQL.first_name %>"><br />
-                            Last name: <input type="text" name="last_name" id="last_name" value="<%= tableSQL.last_name %>"><br />
-                            Email: <input type="text" name="email" id="email" value="<%= tableSQL.email %>"><br />
-                            Position: <input type="text" name="position" id="position" value="<%= tableSQL.position %>"><br />
-                            <select name="department_id">
-    
-                                <% departments.forEach(function(department) { 
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="/admin">Loan Marvel System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Log Out</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Admin Menu
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="nav-link" href="admin/view/customer">Customer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/view/staff">Staff</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/view/department">Department</a>
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="nav-link" href="admin/view/loan">Loan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/view/loan_type">Loan Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/view/payment">Payment</a>
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="nav-link" href="admin/view/transaction_type">Transaction Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/view/access">Access</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/view/access_type">Access Type</a>
+                            </li>
+                    </div>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end left sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+        <div class="influence-profile">
+            <div class="container-fluid dashboard-content ">
+                <!-- ============================================================== -->
+                <!-- pageheader -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h3 class="mb-2">Edit <%= table %> </h3>
+                            <p class="pageheader-text"></p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Edit <%= table %>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end pageheader -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- content -->
+                <!-- ============================================================== -->
+                <div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <!-- ============================================================== -->
+                        <!-- campaign tab one -->
+                        <!-- ============================================================== -->
+                        <div class="influence-profile-content pills-regular">
+                            <h1>View</h1>
+                            <div>
+
+
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                    <form action="" method="post" id="addtable">
+                                        <% if(table == "customer"){%>
+                                        First name: <input type="text" name="first_name" id="first_name"
+                                            value="<%= tableSQL.first_name %>"><br />
+                                        Last name: <input type="text" name="last_name" id="last_name"
+                                            value="<%= tableSQL.last_name %>"><br />
+                                        Email: <input type="text" name="email" id="email"
+                                            value="<%= tableSQL.email %>"><br />
+                                        Address: <input type="text" name="address" id="address"
+                                            value="<%= tableSQL.address %>"><br />
+                                        Postal code: <input type="text" name="postal_code" id="postal_code"
+                                            value="<%= tableSQL.postal_code %>"><br />
+                                        Handphone no.: <input type="text" name="handphone" id="handphone"
+                                            value="<%= tableSQL.handphone %>"><br />
+                                        Date of birth: <input type="date" name="DOB" id="DOB"
+                                            value="<%= tableSQL.date_of_birth %>"><br />
+                                        Job Title: <input type="text" name="job_title" id="job_title"
+                                            value="<%= tableSQL.job_title %>"><br />
+                                        Company: <input type="text" name="company" id="company"
+                                            value="<%= tableSQL.company %>"><br />
+                                        Salary: <input type="text" name="salary" id="salary"
+                                            value="<%= tableSQL.salary %>"><br />
+                                        Username: <input type="text" name="username" id="username"
+                                            value="<%= tableSQL.username %>"><br />
+                                        Password: <input type="password" name="password" id="password"
+                                            value="<%= tableSQL.password %>"><br />
+                                        <% } %>
+
+                                        <% if(table == "staff"){%>
+                                        First name: <input type="text" name="first_name" id="first_name"
+                                            value="<%= tableSQL.first_name %>"><br />
+                                        Last name: <input type="text" name="last_name" id="last_name"
+                                            value="<%= tableSQL.last_name %>"><br />
+                                        Email: <input type="text" name="email" id="email"
+                                            value="<%= tableSQL.email %>"><br />
+                                        Position: <input type="text" name="position" id="position"
+                                            value="<%= tableSQL.position %>"><br />
+                                        <select name="department_id">
+
+                                            <% departments.forEach(function(department) { 
                                     if(department.department_id == tableSQL.department) { %>
-                                    <option value="<%= department.department_id %>" selected><%= department.department_id %></option><br>
-                                    <%} else { %>
-                                        <option value="<%= department.department_id %>"><%= department.department_id %></option><br>
-                                    <%} }); %>
-                                </select><br />
-                            Username: <input type="text" name="username" id="username"  value="<%= tableSQL.username %>"><br />
-                            Password: <input type="password" name="password" id="password" value="<%= tableSQL.password %>"><br />
-                        <% } %>
-    
-    
-    
-                        <% if(table == "department"){%>
-                            Department ID: <input type="text" name="department_id" id="department_id" value="<%= tableSQL.department_id %>"><br />
-                            Department name: <input type="text" name="name" id="name" value="<%= tableSQL.name %>"><br />
-                        <% } %>
-    
-    
-                        <% if(table == "access_type"){%>
-                            Access_ID: <input type="text" name="access_id" id="access_id" value="<%= tableSQL.access_id %>"><br />
-                            Name: <input type="text" name="name" id="name" value="<%= tableSQL.name %>"><br />
-                            Approval Limit: <input type="text" name="approval_limit" id="approval_limit" value="<%= tableSQL.approval_limit %>"><br />
-                            <select name="department_id">
-    
-                                    <% departments.forEach(function(department) { 
+                                            <option value="<%= department.department_id %>" selected>
+                                                <%= department.department_id %></option><br>
+                                            <%} else { %>
+                                            <option value="<%= department.department_id %>">
+                                                <%= department.department_id %></option><br>
+                                            <%} }); %>
+                                        </select><br />
+                                        Username: <input type="text" name="username" id="username"
+                                            value="<%= tableSQL.username %>"><br />
+                                        Password: <input type="password" name="password" id="password"
+                                            value="<%= tableSQL.password %>"><br />
+                                        <% } %>
+
+
+
+                                        <% if(table == "department"){%>
+                                        Department ID: <input type="text" name="department_id" id="department_id"
+                                            value="<%= tableSQL.department_id %>"><br />
+                                        Department name: <input type="text" name="name" id="name"
+                                            value="<%= tableSQL.name %>"><br />
+                                        <% } %>
+
+
+                                        <% if(table == "access_type"){%>
+                                        Access_ID: <input type="text" name="access_id" id="access_id"
+                                            value="<%= tableSQL.access_id %>"><br />
+                                        Name: <input type="text" name="name" id="name"
+                                            value="<%= tableSQL.name %>"><br />
+                                        Approval Limit: <input type="text" name="approval_limit" id="approval_limit"
+                                            value="<%= tableSQL.approval_limit %>"><br />
+                                        <select name="department_id">
+
+                                            <% departments.forEach(function(department) { 
                                         if(department.department_id == tableSQL.department_id) { %>
-                                        <option value="<%= department.department_id %>" selected><%= department.department_id %></option><br>
-                                        <%} else { %>
-                                            <option value="<%= department.department_id %>"><%= department.department_id %></option><br>
-                                        <%} }); %>
-                                    </select><br />
-                        <% } %>
-    
-                        <% if(table == "access"){%>
-                            Account ID: <input type="text" name="account_id" id="account_id" value="<%= tableSQL.account_id %>">
-                            <select name="accesstype_id">
-    
-                                <% accessTypes.forEach(function(accessType) { 
+                                            <option value="<%= department.department_id %>" selected>
+                                                <%= department.department_id %></option><br>
+                                            <%} else { %>
+                                            <option value="<%= department.department_id %>">
+                                                <%= department.department_id %></option><br>
+                                            <%} }); %>
+                                        </select><br />
+                                        <% } %>
+
+                                        <% if(table == "access"){%>
+                                        Account ID: <input type="text" name="account_id" id="account_id"
+                                            value="<%= tableSQL.account_id %>">
+                                        <select name="accesstype_id">
+
+                                            <% accessTypes.forEach(function(accessType) { 
                                     if(accessType.access_id == tableSQL.access_id) {%>
-                                    <option value="<%= accessType.access_id %>" selected><%= accessType.access_id %></option><br>
-                                    <%} else { %>
-                                        <option value="<%= accessTypes.access_id %>"><%= accessType.access_id %></option><br>
-                                    <%} }); %>
-                                </select><br />
-                        <% } %>
-    
-                        <% if(table == "loan_type"){%>
-                            Loan Type ID: <input type="text" name="loan_type_id" id="loan_type_id" value="<%= tableSQL.loan_type_id %>"><br />
-                            Name: <input type="text" name="name" id="name" value="<%= tableSQL.name %>"><br />
-                            Description: <input type="text" name="description" id="description" value="<%= tableSQL.description %>"><br />
-                            Min Amount: <input type="text" name="min_amount" id="min_amount" value="<%= tableSQL.min_amount %>"><br />
-                            Max Amount: <input type="text" name="max_amount" id="max_amount" value="<%= tableSQL.max_amount %>"><br />
-                            Duration: <input type="text" name="duration" id="duration" value="<%= tableSQL.duration %>"><br />
-                            Interest: <input type="text" name="interest" id="interest" value="<%= tableSQL.interest %>"><br />
-                            Last Interest: <input type="text" name="last_interest" id="last_interest" value="<%= tableSQL.last_interest %>"><br />
-                            <select name="department_id">
-    
-                                    <% departments.forEach(function(department) { 
+                                            <option value="<%= accessType.access_id %>" selected>
+                                                <%= accessType.access_id %></option><br>
+                                            <%} else { %>
+                                            <option value="<%= accessTypes.access_id %>"><%= accessType.access_id %>
+                                            </option><br>
+                                            <%} }); %>
+                                        </select><br />
+                                        <% } %>
+
+                                        <% if(table == "loan_type"){%>
+                                        Loan Type ID: <input type="text" name="loan_type_id" id="loan_type_id"
+                                            value="<%= tableSQL.loan_type_id %>"><br />
+                                        Name: <input type="text" name="name" id="name"
+                                            value="<%= tableSQL.name %>"><br />
+                                        Description: <input type="text" name="description" id="description"
+                                            value="<%= tableSQL.description %>"><br />
+                                        Min Amount: <input type="text" name="min_amount" id="min_amount"
+                                            value="<%= tableSQL.min_amount %>"><br />
+                                        Max Amount: <input type="text" name="max_amount" id="max_amount"
+                                            value="<%= tableSQL.max_amount %>"><br />
+                                        Duration: <input type="text" name="duration" id="duration"
+                                            value="<%= tableSQL.duration %>"><br />
+                                        Interest: <input type="text" name="interest" id="interest"
+                                            value="<%= tableSQL.interest %>"><br />
+                                        Last Interest: <input type="text" name="last_interest" id="last_interest"
+                                            value="<%= tableSQL.last_interest %>"><br />
+                                        <select name="department_id">
+
+                                            <% departments.forEach(function(department) { 
                                         if(department.department_id == tableSQL.department_id) { %>
-                                        <option value="<%= department.department_id %>" selected><%= department.department_id %></option><br>
-                                        <%} else { %>
-                                            <option value="<%= department.department_id %>"><%= department.department_id %></option><br>
-                                        <%} }); %>
-                                    </select><br />
-                        <% } %>
-    
-                        <% if(table == "loan"){%>
-                            <select name="loan_type_id"> 
-    
-                                <% loanTypes.forEach(function(loanType) { 
+                                            <option value="<%= department.department_id %>" selected>
+                                                <%= department.department_id %></option><br>
+                                            <%} else { %>
+                                            <option value="<%= department.department_id %>">
+                                                <%= department.department_id %></option><br>
+                                            <%} }); %>
+                                        </select><br />
+                                        <% } %>
+
+                                        <% if(table == "loan"){%>
+                                        <select name="loan_type_id">
+
+                                            <% loanTypes.forEach(function(loanType) { 
                                     if(loanType.loan_type_id == tableSQL.loan_type_id) {%>
-                                    <option value="<%= loanType.loan_type_id %>" selected><%= loanType.loan_type_id %></option><br>
-                                    <%} else { %>
-                                        <option value="<%= loanType.loan_type_id %>"><%= loanType.loan_type_id %></option><br>
-                                    <%} }); %>
-                                </select><br />
-                            <select name="status"> 
-                                
-                                    <option value="new" <% if(tableSQL.status == "new") {%>selected<%}%> >new</option><br>
+                                            <option value="<%= loanType.loan_type_id %>" selected>
+                                                <%= loanType.loan_type_id %></option><br>
+                                            <%} else { %>
+                                            <option value="<%= loanType.loan_type_id %>"><%= loanType.loan_type_id %>
+                                            </option><br>
+                                            <%} }); %>
+                                        </select><br />
+                                        <select name="status">
+
+                                            <option value="new"
+                                                <% if(tableSQL.status == "new") {%>selected<%}%> >new</option><br>
                                     <option value="approved"<% if(tableSQL.status == "approved") {%>selected<%}%>>approved</option><br>
                                     <option value="rejected"<% if(tableSQL.status == "rejected") {%>selected<%}%>>rejected</option><br>
                                     <option value="withdrawn"<% if(tableSQL.status == "withdrawn") {%>selected<%}%>>withdrawn</option><br>
                                 </select><br />
                             Customer: <input type="text" name="account_id" id="account_id" value="<%= tableSQL.account_id %>"><br />
-                            Approver: <input type="text" name="approver_id" id="approver_id" value="<%= tableSQL.approver_id %>"><br />
-                            Remarks: <textarea form="addtable" rows="4" cols="50" name="remarks" id="remarks" value="<%= tableSQL.remarks %>"></textarea><br />
-                            Loan Amount: <input type="text" name="loan_amount" id="loan_amount" value="<%= tableSQL.loan_amount %>"><br />
-                            Application Date: <input type="date" name="date_of_application" id="date_of_application" value="<%= tableSQL.date_of_application %>"><br />
-                            Approval Date: <input type="date" name="approved_on_date" id="approved_on_date" value="<%= tableSQL.approved_on_date %>"><br />
-                            Outstanding Amount: <input type="text" name="outstanding_amount" id="outstanding_amount" value="<%= tableSQL.outstanding_amount %>"><br />
-                            Start Date: <input type="date" name="start_date" id="start_date" value="<%= tableSQL.start_date %>"><br />
-                            End Date: <input type="date" name="end_date" id="end_date" value="<%= tableSQL.end_date %>"><br />
-    
-                        <% } %>
-    
-                        <% if(table == "payment"){%>
-                            <select name="transaction_id"> 
-    
-                                <% transactions.forEach(function(transaction) {
+                                                Approver: <input type="text" name="approver_id" id="approver_id"
+                                                    value="<%= tableSQL.approver_id %>"><br />
+                                                Remarks: <textarea form="addtable" rows="4" cols="50" name="remarks"
+                                                    id="remarks" value="<%= tableSQL.remarks %>"></textarea><br />
+                                                Loan Amount: <input type="text" name="loan_amount" id="loan_amount"
+                                                    value="<%= tableSQL.loan_amount %>"><br />
+                                                Application Date: <input type="date" name="date_of_application"
+                                                    id="date_of_application"
+                                                    value="<%= tableSQL.date_of_application %>"><br />
+                                                Approval Date: <input type="date" name="approved_on_date"
+                                                    id="approved_on_date"
+                                                    value="<%= tableSQL.approved_on_date %>"><br />
+                                                Outstanding Amount: <input type="text" name="outstanding_amount"
+                                                    id="outstanding_amount"
+                                                    value="<%= tableSQL.outstanding_amount %>"><br />
+                                                Start Date: <input type="date" name="start_date" id="start_date"
+                                                    value="<%= tableSQL.start_date %>"><br />
+                                                End Date: <input type="date" name="end_date" id="end_date"
+                                                    value="<%= tableSQL.end_date %>"><br />
+
+                                                <% } %>
+
+                                                <% if(table == "payment"){%>
+                                                <select name="transaction_id">
+
+                                                    <% transactions.forEach(function(transaction) {
                                     if(transaction.transaction_type_id == tableSQL.transaction_type_id) { %>
-                                    <option value="<%= transaction.transaction_type_id %>" selected><%= transaction.transaction_type_id %></option><br>
-                                    <%} else { %>
-                                        <option value="<%= transaction.transaction_type_id %>"><%= transaction.transaction_type_id %></option><br>
-                                    <%} }); %>
-                                </select><br />
-                            Loan ID: <input type="text" name="loan_id" id="loan_id" value="<%= tableSQL.loan_id %>"><br />
-                            Payment Amount: <input type="text" name="payment_amount" id="payment_amount" value="<%= tableSQL.payment_amount %>"><br />
-                            Interest Rate: <input type="text" name="interest_rate" id="interest_rate" value="<%= tableSQL.interest_rate %>"><br />
-                            Principal Amount: <input type="text" name="principal_amount" id="principal_amount" value="<%= tableSQL.principal_amount %>"><br />
-                            Start Date: <input type="date" name="start_date" id="start_date" value="<%= tableSQL.start_date %>"><br />
-                            End Date: <input type="date" name="end_date" id="end_date" value="<%= tableSQL.end_date %>"><br />
-                            Payment Frequency: <input type="text" name="payment_frequency" id="payment_frequency" value="<%= tableSQL.payment_frequency %>"><br />
-    
-                        <% } %>
-    
-                        <% if(table == "transaction_type"){%>
-                            Transaction Type ID: <input type="text" name="transaction_type_id" id="transaction_type_id" value="<%= tableSQL.transaction_type_id %>"><br />
-                            Name: <input type="text" name="name" id="name" value="<%= tableSQL.name %>"><br />
-    
-                        <% } %>
-                        <input type="submit" name="Submit" value="Submit">
-    
-                    </form>
-    </p>
+                                                    <option value="<%= transaction.transaction_type_id %>" selected>
+                                                        <%= transaction.transaction_type_id %></option><br>
+                                                    <%} else { %>
+                                                    <option value="<%= transaction.transaction_type_id %>">
+                                                        <%= transaction.transaction_type_id %></option><br>
+                                                    <%} }); %>
+                                                </select><br />
+                                                Loan ID: <input type="text" name="loan_id" id="loan_id"
+                                                    value="<%= tableSQL.loan_id %>"><br />
+                                                Payment Amount: <input type="text" name="payment_amount"
+                                                    id="payment_amount" value="<%= tableSQL.payment_amount %>"><br />
+                                                Interest Rate: <input type="text" name="interest_rate"
+                                                    id="interest_rate" value="<%= tableSQL.interest_rate %>"><br />
+                                                Principal Amount: <input type="text" name="principal_amount"
+                                                    id="principal_amount"
+                                                    value="<%= tableSQL.principal_amount %>"><br />
+                                                Start Date: <input type="date" name="start_date" id="start_date"
+                                                    value="<%= tableSQL.start_date %>"><br />
+                                                End Date: <input type="date" name="end_date" id="end_date"
+                                                    value="<%= tableSQL.end_date %>"><br />
+                                                Payment Frequency: <input type="text" name="payment_frequency"
+                                                    id="payment_frequency"
+                                                    value="<%= tableSQL.payment_frequency %>"><br />
 
+                                                <% } %>
 
+                                                <% if(table == "transaction_type"){%>
+                                                Transaction Type ID: <input type="text" name="transaction_type_id"
+                                                    id="transaction_type_id"
+                                                    value="<%= tableSQL.transaction_type_id %>"><br />
+                                                Name: <input type="text" name="name" id="name"
+                                                    value="<%= tableSQL.name %>"><br />
 
+                                                <% } %>
+                                                <input type="submit" name="Submit" value="Submit">
 
+                                    </form>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end content -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1  -->
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/vendor/multi-select/js/jquery.multi-select.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="../assets/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/vendor/datatables/js/data-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
 
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
 
-
-
-
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- dashboard finance js -->
+    <script src="assets/libs/js/dashboard-finance.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- gauge js -->
+    <script src="assets/vendor/gauge/gauge.min.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morrisjs.html"></script>
+    <!-- daterangepicker js -->
+    <script src="../../../../cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="../../../../cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+    </script>
 </body>
+
 </html>
