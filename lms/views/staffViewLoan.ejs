@@ -168,6 +168,7 @@
                                                                 <th>Oustanding Amount</th>
                                                                 <th>Customer name</th>
                                                                 <th>Department</th>
+                                                                <th>View</th>
 
                                                             </tr>
                                                         </thead>
@@ -175,6 +176,7 @@
                                                             <% if (exisitngLoan.length > 0) { %>
                                                             <% exisitngLoan.forEach((loan) => { %>
                                                             <tr>
+                                                                
                                                                 <td><%= loan.loan_id %></td>
                                                                 <td><%= loan.loanType_name %></td>
                                                                 <td><%= loan.start_date.toUTCString().split('16:00')[0].split(',')[1] %>
@@ -185,6 +187,8 @@
                                                                 <td><%= loan.customer_firstName %>
                                                                     <%= loan.customer_lastName %></td>
                                                                 <td><%= loan.loanType_department %></td>
+                                                                <td><form action="/staff/loan/<%= loan.loan_id %>"><input
+                                                                    type="submit" value="View"></form></td>
                                                             </tr>
                                                             <% }) %>
                                                             <% } %>
@@ -234,7 +238,7 @@
                                                                 <td><%= loan.loan_amount %></td>
                                                                 <td>
                                                                     <form action="/staff/update/<%= loan.loan_id %>"
-                                                                        method=post><input type="submit" name="add me"
+                                                                        method=post><input type="submit" 
                                                                             value="Approve"></form>
                                                                 </td>
                                                             </tr>

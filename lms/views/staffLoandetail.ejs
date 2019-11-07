@@ -132,7 +132,7 @@
                     <!-- profile -->
                     <!-- ============================================================== -->
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-header">
                                     Staff Details
@@ -144,105 +144,59 @@
                                                 <td>
                                                     <font color="black">Name:</font>
                                                 </td>
-                                                <td><%= staffRes.first_name %> <%= staffRes.last_name %> </td>
+                                                <td> </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <font color="black">Staff ID:</font>
                                                 </td>
-                                                <td><%= staffID %></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <font color="black">Department:</font>
                                                 </td>
-                                                <td><%= staffRes.name %></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <font color="black">Position:</font>
                                                 </td>
-                                                <td><%= staffRes.position %></td>
+                                                <td></td>
                                             </tr>
                                         </table>
                                         <font color="black">Access:</font>
                                         <ol start="1">
-                                            <% accessRes.forEach((accessRess) => { %>
-                                            <li> <%= accessRess.name %> </li>
-                                            <% }) %>
+                                           
                                         </ol>
                                     </blockquote>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end profile -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- campaign data -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <!-- ============================================================== -->
-                            <!-- campaign tab one -->
-                            <!-- ============================================================== -->
-                            <div class="influence-profile-content pills-regular">
-
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="section-block">
-                                        <h3 class="section-title">Loan</h3>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h1 class="mb-1"><%= currentLoan.ongoing %></h1>
-                                            <p>On going Loans</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h1 class="mb-1"><%= pendingLoan.pending %></h1>
-                                            <p>Pending Loans</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Pending Approval</h5>
+                            <h5 class="card-header">Payment Detail</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
-                                                <th>Loan ID</th>
-                                                <th>Application date</th>
-                                                <th>Loan Name</th>
-                                                <th>Customer Name</th>
-                                                <th>Loan amount</th>
-                                                <th>Approval</th>
+                                                <th>Payment ID</th>
+                                                <th>Transaction type</th>
+                                                <th>Amount</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <% if (approveLoan.length > 0) { %>
-                                            <% approveLoan.forEach((loan) => { %>
+                                            <% if (payments.length > 0) { %>
+                                            <% payments.forEach((payment) => { %>
                                             <tr>
-                                                <td><%= loan.loan_id %></td>
-                                                <td><%= loan.date_of_application.toUTCString().split('16:00')[0].split(',')[1] %>
+                                                <td><%= payment.payment_id %></td>
+                                                <td><%= payment.name %>
                                                 </td>
-                                                <td><%= loan.name %></td>
-                                                <td><%= loan.first_name %> <%= loan.last_name %></td>
-                                                <td><%= loan.loan_amount %></td>
-                                                <td>
-                                                    <form action="/staff/update/<%= loan.loan_id %>" method=post><input
-                                                            type="submit" name="add me" value="Approve"></form>
-                                                </td>
+                                                <td><%= payment.payment_amount %></td>
+
                                             </tr>
                                             <% }) %>
                                             <% } %>
