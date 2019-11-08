@@ -142,7 +142,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="pills-packages-tab" data-toggle="pill"
                                         href="#pills-packages" role="tab" aria-controls="pills-packages"
-                                        aria-selected="false">Loans Overview</a>
+                                        aria-selected="false">Pending loan</a>
                                 </li>
 
                             </ul>
@@ -187,8 +187,9 @@
                                                                 <td><%= loan.customer_firstName %>
                                                                     <%= loan.customer_lastName %></td>
                                                                 <td><%= loan.loanType_department %></td>
-                                                                <td><form action="/staff/loan/<%= loan.loan_id %>"><input
-                                                                    type="submit" value="View"></form></td>
+                                                                <td><input
+                                                                    type="submit" value="View" onclick="window.location='/staff/loandetails?id=<%= loan.loan_id %>';">
+                                                                    </td>
                                                             </tr>
                                                             <% }) %>
                                                             <% } %>
@@ -240,6 +241,8 @@
                                                                     <form action="/staff/update/<%= loan.loan_id %>"
                                                                         method=post><input type="submit" 
                                                                             value="Approve"></form>
+                                                                            <form action="/staff/reject/<%= loan.loan_id %>" method=post><input
+                                                                                type="submit" value="Reject"></form>
                                                                 </td>
                                                             </tr>
                                                             <% }) %>

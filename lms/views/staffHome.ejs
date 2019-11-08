@@ -242,6 +242,8 @@
                                                 <td>
                                                     <form action="/staff/update/<%= loan.loan_id %>" method=post><input
                                                             type="submit" value="Approve"></form>
+                                                            <form action="/staff/reject/<%= loan.loan_id %>" method=post><input
+                                                                type="submit" value="Reject"></form>
                                                 </td>
                                             </tr>
                                             <% }) %>

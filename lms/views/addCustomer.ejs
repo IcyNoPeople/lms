@@ -75,33 +75,33 @@
                             </li>
                             <li class="nav-item ">
 
-                                <a class="nav-link" href="/admin/view/customer">Customer</a>
+                                <a class="nav-link" href="/admin/view?table=customer">Customer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/staff">Staff</a>
+                                <a class="nav-link" href="/admin/view?table=staff">Staff</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/department">Department</a>
+                                <a class="nav-link" href="/admin/view?table=department">Department</a>
                             </li>
                             <li class="nav-item ">
 
-                                <a class="nav-link" href="/admin/view/loan">Loan</a>
+                                <a class="nav-link" href="/admin/view?table=loan">Loan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/loan_type">Loan Type</a>
+                                <a class="nav-link" href="/admin/view?table=loan_type">Loan Type</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/payment">Payment</a>
+                                <a class="nav-link" href="/admin/view?table=payment">Payment</a>
                             </li>
                             <li class="nav-item ">
 
-                                <a class="nav-link" href="/admin/view/transaction_type">Transaction Type</a>
+                                <a class="nav-link" href="/admin/view?table=transaction_type">Transaction Type</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/access">Access</a>
+                                <a class="nav-link" href="/admin/view?table=access">Access</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/access_type">Access Type</a>
+                                <a class="nav-link" href="/admin/view?table=access_type">Access Type</a>
                             </li>
                     </div>
 
@@ -126,14 +126,14 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h3 class="mb-2">Your Profile </h3>
+                            <h3 class="mb-2">Add </h3>
                             <p class="pageheader-text"></p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a>
+                                        <li class="breadcrumb-item">Dashboard
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Home
+                                        <li class="breadcrumb-item active" aria-current="page">Add <%= table %>
                                         </li>
                                     </ol>
                                 </nav>
@@ -215,7 +215,7 @@
                     <% } %>
 
                     <% if(table == "access"){%>
-                    Account ID: <input type="text" name="account_id" id="account_id">
+                    Account ID: <input type="text" name="account_id" id="account_id"><br/>
 
                     Access Type: <select name="accesstype_id">
                         <option value=""></option>

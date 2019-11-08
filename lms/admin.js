@@ -18,9 +18,9 @@ Router.get('/', (req, res) => {
     }
 });
 
-Router.get('/view/:id', (req, res) => {
+Router.get('/view', (req, res) => {
     if (req.session.loggedin && req.session.admin) {
-        let table = req.params.id;
+        let table = req.query.table;
         var SQL;
         switch (table) {
             case "customer":
@@ -58,7 +58,7 @@ Router.get('/view/:id', (req, res) => {
             if (err) {
                 return res.status(500).send(err);
             }
-            console.log(result);
+            
             res.render('view', {
                 table: table,
                 tableSQL: result
@@ -70,9 +70,9 @@ Router.get('/view/:id', (req, res) => {
 
 });
 
-Router.get('/add/:id', async (req, res) => {
+Router.get('/add', async (req, res) => {
     if (req.session.loggedin && req.session.admin) {
-        let table = req.params.id;
+        let table = req.query.table;
         let departmentSQL = 'SELECT * FROM department';
         let loanTypeSQL = 'SELECT * FROM loan_type';
         let accessTypeSQL = 'SELECT * FROM access_type';
@@ -90,6 +90,7 @@ Router.get('/add/:id', async (req, res) => {
             transaction = await queryAsync(transactionSQL);
 
             res.render('addCustomer', {
+                
                 table: table,
                 departments: department,
                 loanTypes: loanType,
@@ -106,9 +107,9 @@ Router.get('/add/:id', async (req, res) => {
     }
 });
 
-Router.post('/add/:id', (req, res) => {
+Router.post('/add', (req, res) => {
     if (req.session.loggedin && req.session.admin) {
-        let table = req.params.id;
+        let table = req.query.table;
 
         switch (table) {
             case "customer":
@@ -134,7 +135,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('/admin/view/customer');
+                    res.redirect('/admin/view?table=customer');
                 })
 
                 break;
@@ -156,7 +157,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('/admin/view/staff');
+                    res.redirect('/admin/view?table=staff');
                 })
 
                 break;
@@ -173,7 +174,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/department');
+                    res.redirect('/admin/view?table=department');
                 })
                 break;
             case "loan":
@@ -198,7 +199,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/loan');
+                    res.redirect('/admin/view?table=loan');
                 })
                 break;
             case "loan_type":
@@ -221,7 +222,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/loan_type');
+                    res.redirect('/admin/view?table=loan_type');
                 })
                 break;
             case "payment":
@@ -243,7 +244,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/payment');
+                    res.redirect('/admin/view?table=payment');
                 })
                 break;
             case "transaction_type":
@@ -259,7 +260,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/transaction_type');
+                    res.redirect('/admin/view?table=transaction_type');
                 })
                 break;
             case "access":
@@ -275,7 +276,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/access');
+                    res.redirect('/admin/view?table=access');
                 })
                 break;
             case "access_type":
@@ -294,7 +295,7 @@ Router.post('/add/:id', (req, res) => {
                         return res.status(500).send(err);
                     }
 
-                    res.redirect('admin/view/access_type');
+                    res.redirect('/admin/view?table=access_type');
                 })
                 break;
             default:
@@ -308,9 +309,9 @@ Router.post('/add/:id', (req, res) => {
 });
 
 
-Router.get('/edit/:id', async (req, res) => {
+Router.get('/edit', async (req, res) => {
     if (req.session.loggedin && req.session.admin) {
-        let table = req.params.id;
+        let table = req.query.table;
         console.log(table);
         let id = req.query.id;
         var SQL;
@@ -359,8 +360,8 @@ Router.get('/edit/:id', async (req, res) => {
                     case "transaction_type":
                         SQL = 'SELECT * FROM transaction_type where transaction_id = ?';
                         break;
-                    case "access":
-                        SQL = 'SELECT * FROM access where access_id = ?';
+                    case "access_type":
+                        SQL = 'SELECT * FROM access_type where access_id = ?';
                         break;
                     default:
                         break;
@@ -389,9 +390,9 @@ Router.get('/edit/:id', async (req, res) => {
     }
 });
 
-Router.post('/edit/:id', (req, res) => {
+Router.post('/edit', (req, res) => {
     if (req.session.loggedin && req.session.admin) {
-        let table = req.params.id;
+        let table = req.query.table;
         let id = req.query.id;
         var SQL;
 
@@ -430,7 +431,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
                         console.log("Updated");
-                        res.redirect('/admin/view/customer');
+                        res.redirect('/admin/view?table=customer');
                     })
                     break;
                 case "staff":
@@ -449,7 +450,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
                         console.log("Updated");
-                        res.redirect('/admin/view/access');
+                        res.redirect('/admin/view?table=access');
                     })
 
                     break;
@@ -466,7 +467,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
 
-                        res.redirect('admin/view/department');
+                        res.redirect('/admin/view?table=department');
                     })
                     break;
                 case "loan":
@@ -491,7 +492,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
 
-                        res.redirect('admin/view/loan');
+                        res.redirect('admin/view?table=loan');
                     })
                     break;
                 case "loan_type":
@@ -514,7 +515,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
 
-                        res.redirect('admin/view/loan_type');
+                        res.redirect('/admin/view?table=loan_type');
                     })
                     break;
                 case "payment":
@@ -536,7 +537,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
 
-                        res.redirect('admin/view/payment');
+                        res.redirect('/admin/view?table=payment');
                     })
                     break;
                 case "transaction_type":
@@ -552,7 +553,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
 
-                        res.redirect('admin/view/transaction_type');
+                        res.redirect('/admin/view?table=transaction_type');
                     })
                     break;
 
@@ -572,7 +573,7 @@ Router.post('/edit/:id', (req, res) => {
                             return res.status(500).send(err);
                         }
 
-                        res.redirect('admin/view/access_type');
+                        res.redirect('/admin/view?table=access_type');
                     })
                     break;
                 default:
@@ -589,7 +590,7 @@ Router.post('/edit/:id', (req, res) => {
 
 Router.get('/delete/access', (req, res) => {
     if (req.session.loggedin && req.session.admin) {
-        let table = req.params.id;
+        
         let accountid = req.query.accountid;
         let accesstypeid = req.query.accesstypeid;
         var SQL = "DELETE FROM access WHERE accesstype_id = ? AND account_id = ?;";
@@ -600,7 +601,7 @@ Router.get('/delete/access', (req, res) => {
                 return res.status(500).send(err);
             }
             console.log("Updated");
-            res.redirect('/admin/view?table=customer');
+            res.redirect('/admin/view?table=access');
         })
     } else {
         res.send('Please login to view this page!');

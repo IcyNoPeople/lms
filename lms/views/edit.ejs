@@ -75,33 +75,33 @@
                             </li>
                             <li class="nav-item ">
 
-                                <a class="nav-link" href="/admin/view/customer">Customer</a>
+                                <a class="nav-link" href="/admin/view?table=customer">Customer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/staff">Staff</a>
+                                <a class="nav-link" href="/admin/view?table=staff">Staff</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/department">Department</a>
+                                <a class="nav-link" href="/admin/view?table=department">Department</a>
                             </li>
                             <li class="nav-item ">
 
-                                <a class="nav-link" href="/admin/view/loan">Loan</a>
+                                <a class="nav-link" href="/admin/view?table=loan">Loan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/loan_type">Loan Type</a>
+                                <a class="nav-link" href="/admin/view?table=loan_type">Loan Type</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/payment">Payment</a>
+                                <a class="nav-link" href="/admin/view?table=payment">Payment</a>
                             </li>
                             <li class="nav-item ">
 
-                                <a class="nav-link" href="/admin/view/transaction_type">Transaction Type</a>
+                                <a class="nav-link" href="/admin/view?table=transaction_type">Transaction Type</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/access">Access</a>
+                                <a class="nav-link" href="/admin/view?table=access">Access</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/view/access_type">Access Type</a>
+                                <a class="nav-link" href="/admin/view?table=access_type">Access Type</a>
                             </li>
                     </div>
 
@@ -131,8 +131,9 @@
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a>
+                                        <li class="breadcrumb-item">Dashboard
                                         </li>
+                                        
                                         <li class="breadcrumb-item active" aria-current="page">Edit <%= table %>
                                         </li>
                                     </ol>
@@ -153,7 +154,7 @@
                         <!-- campaign tab one -->
                         <!-- ============================================================== -->
                         <div class="influence-profile-content pills-regular">
-                            <h1>View</h1>
+                            <h1>Edit</h1>
                             <div>
 
 
@@ -162,41 +163,41 @@
                                     <form action="" method="post" id="addtable">
                                         <% if(table == "customer"){%>
                                         First name: <input type="text" name="first_name" id="first_name"
-                                            value="<%= tableSQL.first_name %>"><br />
+                                            value="<%= tableSQL.first_name %>" required=""><br />
                                         Last name: <input type="text" name="last_name" id="last_name"
-                                            value="<%= tableSQL.last_name %>"><br />
+                                            value="<%= tableSQL.last_name %>" required=""><br />
                                         Email: <input type="text" name="email" id="email"
-                                            value="<%= tableSQL.email %>"><br />
+                                            value="<%= tableSQL.email %>" required=""><br />
                                         Address: <input type="text" name="address" id="address"
-                                            value="<%= tableSQL.address %>"><br />
+                                            value="<%= tableSQL.address %>" required=""><br />
                                         Postal code: <input type="text" name="postal_code" id="postal_code"
-                                            value="<%= tableSQL.postal_code %>"><br />
+                                            value="<%= tableSQL.postal_code %>" required=""><br />
                                         Handphone no.: <input type="text" name="handphone" id="handphone"
-                                            value="<%= tableSQL.handphone %>"><br />
+                                            value="<%= tableSQL.handphone %>" required=""><br />
                                         Date of birth: <input type="date" name="DOB" id="DOB"
-                                            value="<%= tableSQL.date_of_birth %>"><br />
+                                            value="<%= tableSQL.date_of_birth %>" required=""><br />
                                         Job Title: <input type="text" name="job_title" id="job_title"
-                                            value="<%= tableSQL.job_title %>"><br />
+                                            value="<%= tableSQL.job_title %>" required=""><br />
                                         Company: <input type="text" name="company" id="company"
-                                            value="<%= tableSQL.company %>"><br />
+                                            value="<%= tableSQL.company %>" required=""><br />
                                         Salary: <input type="text" name="salary" id="salary"
-                                            value="<%= tableSQL.annual_salary %>"><br />
+                                            value="<%= tableSQL.annual_salary %>" required=""><br />
                                         Username: <input type="text" name="username" id="username"
-                                            value="<%= tableSQL.username %>"><br />
+                                            value="<%= tableSQL.username %>" required=""><br />
                                         Password: <input type="password" name="password" id="password"
-                                            value="<%= tableSQL.password %>"><br />
+                                            value="<%= tableSQL.password %>" required=""><br />
                                         <% } %>
 
                                         <% if(table == "staff"){%>
                                         First name: <input type="text" name="first_name" id="first_name"
-                                            value="<%= tableSQL.first_name %>"><br />
+                                            value="<%= tableSQL.first_name %>" required=""><br />
                                         Last name: <input type="text" name="last_name" id="last_name"
-                                            value="<%= tableSQL.last_name %>"><br />
+                                            value="<%= tableSQL.last_name %>" required=""><br />
                                         Email: <input type="text" name="email" id="email"
-                                            value="<%= tableSQL.email %>"><br />
+                                            value="<%= tableSQL.email %>" required=""><br />
                                         Position: <input type="text" name="position" id="position"
-                                            value="<%= tableSQL.position %>"><br />
-                                        <select name="department_id">
+                                            value="<%= tableSQL.position %>" required=""><br />
+                                        Department ID:<select name="department_id" required="">
 
                                             <% departments.forEach(function(department) { 
                                     if(department.department_id == tableSQL.department) { %>
@@ -208,29 +209,29 @@
                                             <%} }); %>
                                         </select><br />
                                         Username: <input type="text" name="username" id="username"
-                                            value="<%= tableSQL.username %>"><br />
+                                            value="<%= tableSQL.username %>" required=""><br />
                                         Password: <input type="password" name="password" id="password"
-                                            value="<%= tableSQL.password %>"><br />
+                                            value="<%= tableSQL.password %>" required=""><br />
                                         <% } %>
 
 
 
                                         <% if(table == "department"){%>
                                         Department ID: <input type="text" name="department_id" id="department_id"
-                                            value="<%= tableSQL.department_id %>"><br />
+                                            value="<%= tableSQL.department_id %>" required=""><br />
                                         Department name: <input type="text" name="name" id="name"
-                                            value="<%= tableSQL.name %>"><br />
+                                            value="<%= tableSQL.name %>" required=""><br />
                                         <% } %>
 
 
                                         <% if(table == "access_type"){%>
                                         Access_ID: <input type="text" name="access_id" id="access_id"
-                                            value="<%= tableSQL.access_id %>"><br />
+                                            value="<%= tableSQL.access_id %>" required=""><br />
                                         Name: <input type="text" name="name" id="name"
-                                            value="<%= tableSQL.name %>"><br />
+                                            value="<%= tableSQL.name %>" required=""><br />
                                         Approval Limit: <input type="text" name="approval_limit" id="approval_limit"
-                                            value="<%= tableSQL.approval_limit %>"><br />
-                                        <select name="department_id">
+                                            value="<%= tableSQL.approval_limit %>" required=""><br />
+                                        Department ID: <select name="department_id" required="">
 
                                             <% departments.forEach(function(department) { 
                                         if(department.department_id == tableSQL.department_id) { %>
@@ -245,8 +246,8 @@
 
                                         <% if(table == "access"){%>
                                         Account ID: <input type="text" name="account_id" id="account_id"
-                                            value="<%= tableSQL.account_id %>">
-                                        <select name="accesstype_id">
+                                            value="<%= tableSQL.account_id %>" required="">
+                                        Access Type: <select name="accesstype_id" required="">
 
                                             <% accessTypes.forEach(function(accessType) { 
                                     if(accessType.access_id == tableSQL.access_id) {%>
@@ -276,7 +277,7 @@
                                             value="<%= tableSQL.interest %>"><br />
                                         Last Interest: <input type="text" name="last_interest" id="last_interest"
                                             value="<%= tableSQL.last_interest %>"><br />
-                                        <select name="department_id">
+                                        Department ID: <select name="department_id">
 
                                             <% departments.forEach(function(department) { 
                                         if(department.department_id == tableSQL.department_id) { %>
@@ -290,7 +291,7 @@
                                         <% } %>
 
                                         <% if(table == "loan"){%>
-                                        <select name="loan_type_id">
+                                        Loan ID: <select name="loan_type_id">
 
                                             <% loanTypes.forEach(function(loanType) { 
                                     if(loanType.loan_type_id == tableSQL.loan_type_id) {%>
@@ -301,7 +302,7 @@
                                             </option><br>
                                             <%} }); %>
                                         </select><br />
-                                        <select name="status">
+                                        Status: <select name="status">
 
                                             <option value="new"
                                                 <% if(tableSQL.status == "new") {%>selected<%}%> >new</option><br>

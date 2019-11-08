@@ -37,7 +37,7 @@ app.use('/staff',staffPage);
 
 
 app.get('/', (req, res) => {
-  // Education staff: 30000004, admin: 30000025, double access: 30000024, 
+  // Education staff: 30000004, admin: 30000025, double access: 30000024, Corporate: 30000013, personal 30000008
   req.session.sta_id = '30000024';
   req.session.admin = true;
   req.session.staff = true;
@@ -68,3 +68,6 @@ var server = app.listen(80, function () {
    
    console.log("Example app listening at http://%s:%s", host, port)
 })
+
+
+ 

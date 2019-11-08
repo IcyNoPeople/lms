@@ -142,33 +142,60 @@
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <font color="black">Name:</font>
+                                                    <font color="black">Loan ID:</font>
                                                 </td>
-                                                <td> </td>
+                                                <td><%= exisitngLoan[0].loan_id %> </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <font color="black">Staff ID:</font>
+                                                    <font color="black">Loan Name:</font>
                                                 </td>
-                                                <td></td>
+                                                <td><%= exisitngLoan[0].loanType_name %></td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <font color="black">Department:</font>
+                                                    <font color="black">Customer ID:</font>
                                                 </td>
-                                                <td></td>
+                                                <td><%= exisitngLoan[0].customer_id %></td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <font color="black">Position:</font>
+                                                    <font color="black">Customer Name:</font>
                                                 </td>
-                                                <td></td>
+                                                <td><%= exisitngLoan[0].customer_firstName %> <%= exisitngLoan[0].customer_lastName %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <font color="black">Approver ID:</font>
+                                                </td>
+                                                <td><%= exisitngLoan[0].approver_id %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <font color="black">Approver Name:</font>
+                                                </td>
+                                                <td><%= exisitngLoan[0].staff_firstName %> <%= exisitngLoan[0].staff_lastName %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <font color="black">Approver Date:</font>
+                                                </td>
+                                                <td><%= exisitngLoan[0].approved_on_date.toUTCString().split('16:00')[0].split(',')[1] %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <font color="black">Start Date:</font>
+                                                </td>
+                                                <td><%= exisitngLoan[0].start_date.toUTCString().split('16:00')[0].split(',')[1] %></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <font color="black">Oustanding Amount:</font>
+                                                </td>
+                                                <td><%= exisitngLoan[0].outstanding_amount %></td>
                                             </tr>
                                         </table>
-                                        <font color="black">Access:</font>
-                                        <ol start="1">
-                                           
-                                        </ol>
+
                                     </blockquote>
                                 </div>
                             </div>
